@@ -5,6 +5,15 @@ TagManager:
   serializedVersion: 3
   tags:
   - Anchor
+  - Pot
+  - Sword
+  - Plant
+  - Web
+  - Broom
+  - Potion1F
+  - Potion5F_Red
+  - Potion5F_Blue
+  - GasProgressBar
   layers:
   - Default
   - TransparentFX

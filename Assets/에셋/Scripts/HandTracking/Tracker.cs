@@ -21,7 +21,7 @@ public class Tracker : MonoBehaviour
     {
         LTrackerObject = GameObject.Find("/XR Origin (XR Rig)/Camera Offset/Left Controller");
         RTrackerObject = GameObject.Find("/XR Origin (XR Rig)/Camera Offset/Right Controller");
-        LTracker = LTrackerObject.transform.localPosition;
-        RTracker= RTrackerObject.transform.localPosition;
+        LTracker = LTrackerObject.transform.position;
+        RTracker= RTrackerObject.transform.position;
     }
 }

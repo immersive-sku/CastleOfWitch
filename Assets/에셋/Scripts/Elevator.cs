@@ -35,6 +35,7 @@ public class Elevator : MonoBehaviour
         EventList[i].Invoke();
         Count = 0;
         CanGoUP = true;
+        gameObject.GetComponent<BoxCollider>().enabled = true;
         i++;
         print("clear!");
     }
@@ -73,6 +74,7 @@ public class Elevator : MonoBehaviour
                 {
                     item.SetActive(false);
                 }
+                gameObject.GetComponent<BoxCollider>().enabled = false;
             }
             else
             {

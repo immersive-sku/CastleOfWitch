@@ -80,6 +80,20 @@
             },
             "m_InputSlot": {
                 "m_Node": {
+                    "m_Id": "cd01b32c7f1f4af48535b96edcac87d0"
+                },
+                "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "5ec0a6f1f8d6474bad189b67864a79ba"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
                     "m_Id": "fb0c65451d4f472492660d07022f8ec0"
                 },
                 "m_SlotId": 0
@@ -910,10 +924,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -262.0,
+            "x": -259.0,
             "y": 374.0000305175781,
-            "width": 208.0,
-            "height": 278.0000305175781
+            "width": 207.9999542236328,
+            "height": 277.9999694824219
         }
     },
     "m_Slots": [
@@ -1135,9 +1149,9 @@
     "m_ShaderOutputName": "Emission",
     "m_StageCapability": 2,
     "m_Value": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
+        "x": 0.6886792182922363,
+        "y": 0.452251672744751,
+        "z": 0.16567280888557435
     },
     "m_DefaultValue": {
         "x": 0.0,

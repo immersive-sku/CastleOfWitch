@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using Vector3 = UnityEngine.Vector3;
 using UnityEditor;
+using System.IO;
 
 public class SaveTrack : MonoBehaviour
 {
@@ -10,9 +11,9 @@ public class SaveTrack : MonoBehaviour
     public List<Vector3> RTracker = new List<Vector3>();
     private Tracker TrackerInstance;
 #if UNITY_EDITOR
-    private void Start()
+    public void StartTracking()
     {
-        InvokeRepeating("UpdateLimited", 0, 0.016f);
+        InvokeRepeating(nameof(UpdateLimited), 0, 0.016f);
         TrackerInstance = Object.FindFirstObjectByType<Tracker>();
     }
 
@@ -22,9 +23,25 @@ public class SaveTrack : MonoBehaviour
         RTracker.Add(TrackerInstance.RTracker);
     }
 
-    private void OnDestroy()
+    public void Save()
     {
-        PrefabUtility.SaveAsPrefabAsset(gameObject, "Assets/Resources/Prefabs/" + gameObject.name + ".prefab");
+        LTracker = new List<Vector3>();
+        RTracker = new List<Vector3>();
+        int i = 0;
+        if(!File.Exists(Application.dataPath + "/Resources/Prefabs/" + gameObject.name + ".prefab"))
+        {
+            PrefabUtility.SaveAsPrefabAsset(gameObject, "Assets/Resources/Prefabs/" + gameObject.name + ".prefab");
+        }
+        else if(!File.Exists(Application.dataPath + "/Resources/Prefabs/" + gameObject.name + 0 + ".prefab"))
+        {
+            PrefabUtility.SaveAsPrefabAsset(gameObject, "Assets/Resources/Prefabs/" + gameObject.name + 0 + ".prefab");
+            print("wth???");
+        }
+        else while (File.Exists(Application.dataPath + "/Resources/Prefabs/" + gameObject.name + i + ".prefab"))
+        {
+                i++;
+        }
+        PrefabUtility.SaveAsPrefabAsset(gameObject, "Assets/Resources/Prefabs/" + gameObject.name + i + ".prefab");
     }
 #endif
 }

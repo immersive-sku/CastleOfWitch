@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PotionSpawner : MonoBehaviour
 {
+    public GameObject TransformObject;
     public GameObject PotionDrop;
     public void Spawn()
     {
@@ -15,7 +16,11 @@ public class PotionSpawner : MonoBehaviour
     }
     IEnumerator SpawnCorutine()
     {
-        yield return new WaitForSeconds(1);
-        Instantiate(PotionDrop, gameObject.transform.position, gameObject.transform.rotation);
+        while(true)
+        {
+            Instantiate(PotionDrop, TransformObject.transform.position, TransformObject.transform.rotation);
+            print("spawnPotion");
+            yield return new WaitForSeconds(1);
+        }
     }
 }

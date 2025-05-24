@@ -14,15 +14,15 @@ PrefabInstance:
       objectReference: {fileID: -876546973899608171, guid: 663d3f6aad56ab749bcf790e154c5256, type: 3}
     - target: {fileID: 5508004893569599840, guid: 4621f91a59d2a014882a8a45db0f6600, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5066807
+      value: -3.9
       objectReference: {fileID: 0}
     - target: {fileID: 5508004893569599840, guid: 4621f91a59d2a014882a8a45db0f6600, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 17.049053
+      value: 16.265522
       objectReference: {fileID: 0}
     - target: {fileID: 5508004893569599840, guid: 4621f91a59d2a014882a8a45db0f6600, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.365373
+      value: 1.4561746
       objectReference: {fileID: 0}
     - target: {fileID: 5508004893569599840, guid: 4621f91a59d2a014882a8a45db0f6600, type: 3}
       propertyPath: m_LocalRotation.w
@@ -56,7 +56,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6768735518531066716, guid: 4621f91a59d2a014882a8a45db0f6600, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6394022514414088250, guid: 4621f91a59d2a014882a8a45db0f6600, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -85,14 +90,38 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.Light, UnityEngine
+        m_MethodName: set_intensity
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.5
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2

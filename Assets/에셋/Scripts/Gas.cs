@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class Gas : MonoBehaviour
 {
     GameObject Elevator;
-    public List<Slider> ProgressBars;
-    public List<TMP_Text> ProgressTexts;
+    public List<GameObject> Gauge;
     float t = 0;
     float PlayerTriggerSeconds = 0;
     public float PlayerDamageTickInSeconds = 0;
     public float MovingTime;
     public float GasDamagePerTick;
+    public Vector3 StartAngle;
+    public Vector3 EndAngle;
     private void Start()
     {
         Elevator = GameObject.Find("Elevator");
@@ -22,13 +23,9 @@ public class Gas : MonoBehaviour
         t += Time.deltaTime;
 
         SetLoc(t / MovingTime);
-        foreach (var bar in ProgressBars)
+        foreach (var i in Gauge)
         {
-            bar.value = t / MovingTime;
-        }
-        foreach (var text in ProgressTexts)
-        {
-            text.text = (t / MovingTime).ToString("F2");
+            i.transform.rotation = Quaternion.Euler(Vector3.Lerp(StartAngle, EndAngle ,t/MovingTime));
         }
     }
     public void SetLoc(float t)

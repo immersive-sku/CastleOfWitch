@@ -12,7 +12,6 @@ public class OnTrigger : MonoBehaviour
     public UnityEvent EventOnWrongTypeExit;
     private void OnTriggerEnter(UnityEngine.Collider other)
     {
-        print(other.gameObject.tag);
         if (UseWrongType && other.gameObject.tag == WrongType.tag)
         {
             EventOnWrongType.Invoke();

@@ -14,10 +14,12 @@ public class Break : MonoBehaviour
         if(UseWrongType && collision.gameObject.tag == WrongType.tag)
         {
             EventOnWrongType.Invoke();
+            print("Wrong");
         }
         if (collision.gameObject.tag == KillType.tag)
         {
             EventOnRightType.Invoke();
+            print("Right");
             Instantiate(Particle, transform.position, transform.rotation);
             Component.FindAnyObjectByType<Elevator>().Clear();
             Destroy(gameObject);

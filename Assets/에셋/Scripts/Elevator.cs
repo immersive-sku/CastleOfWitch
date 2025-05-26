@@ -26,12 +26,16 @@ public class Elevator : MonoBehaviour
         print("add");
         if (Count >= CountList[i])
         {
-            StartCoroutine(nameof(OnClear));
+            AllClear();
         }
+    }
+    public void AllClear()
+    {
+        StartCoroutine(nameof(OnClear));
     }
     IEnumerator OnClear()
     {
-        yield return new WaitForSeconds(FloorList[i]);
+        yield return new WaitForSeconds(DelayList[i]);
         EventList[i].Invoke();
         Count = 0;
         CanGoUP = true;
@@ -44,13 +48,9 @@ public class Elevator : MonoBehaviour
         Renderer = gameObject.GetComponent<MeshRenderer>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.name == "XR Origin (XR Rig)")WillGoUP = true;
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.name == "XR Origin (XR Rig)") WillGoUP = false;
+        if (other.gameObject.name == "XR Origin (XR Rig)") WillGoUP = true;
     }
 
     void Update()
@@ -65,15 +65,16 @@ public class Elevator : MonoBehaviour
         }
         if (CanGoUP && WillGoUP)
         {
-            if (GameObject.Find("XR Origin (XR Rig)").transform.position.y >= FloorList[i - 1])
+            if (gameObject.transform.position.y >= FloorList[i - 1])
             {
-                transform.SetPositionAndRotation(new Vector3(transform.position.x, FloorList[i - 1], transform.position.z), transform.rotation);
-                CanGoUP = false;
-                FindAnyObjectByType<Gas>().Reset();
                 foreach (var item in ElevatorWalls)
                 {
                     item.SetActive(false);
                 }
+                transform.SetPositionAndRotation(new Vector3(transform.position.x, FloorList[i - 1], transform.position.z), transform.rotation);
+                CanGoUP = false;
+                WillGoUP = false;
+                FindAnyObjectByType<Gas>().Reset();
                 gameObject.GetComponent<BoxCollider>().enabled = false;
             }
             else

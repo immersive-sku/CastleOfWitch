@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class Lever : MonoBehaviour
 {
     public GameObject ClearEffect;
+    public UnityEvent Event;
     List<bool> GearList;
     private void Start()
     {
@@ -22,7 +24,8 @@ public class Lever : MonoBehaviour
         {
             if (!item) return;
         }
-        Ending();
+        gameObject.transform.SetPositionAndRotation(transform.position + new Vector3(0, 0.3f, 0), transform.rotation);
+        Event.Invoke();
     }
     public void Sub(int i)
     {
@@ -34,10 +37,14 @@ public class Lever : MonoBehaviour
     {
         StartCoroutine("End");
     }
-    IEnumerable End()
+    IEnumerator End()
     {
-        Instantiate(ClearEffect);
-        yield return new WaitForSeconds(3);
-        SceneManager.LoadScene("End");
+        while (true)
+        {
+            Instantiate(ClearEffect);
+            yield return new WaitForSeconds(3);
+            SceneManager.LoadScene("End");
+            print("enddd");
+        }
     }
 }

@@ -25,23 +25,24 @@ public class SaveTrack : MonoBehaviour
 
     public void Save()
     {
-        LTracker = new List<Vector3>();
-        RTracker = new List<Vector3>();
         int i = 0;
         if(!File.Exists(Application.dataPath + "/Resources/Prefabs/" + gameObject.name + ".prefab"))
         {
             PrefabUtility.SaveAsPrefabAsset(gameObject, "Assets/Resources/Prefabs/" + gameObject.name + ".prefab");
+            return;
         }
         else if(!File.Exists(Application.dataPath + "/Resources/Prefabs/" + gameObject.name + 0 + ".prefab"))
         {
             PrefabUtility.SaveAsPrefabAsset(gameObject, "Assets/Resources/Prefabs/" + gameObject.name + 0 + ".prefab");
-            print("wth???");
+            return;
         }
         else while (File.Exists(Application.dataPath + "/Resources/Prefabs/" + gameObject.name + i + ".prefab"))
         {
                 i++;
         }
         PrefabUtility.SaveAsPrefabAsset(gameObject, "Assets/Resources/Prefabs/" + gameObject.name + i + ".prefab");
+        LTracker = new List<Vector3>();
+        RTracker = new List<Vector3>();
     }
 #endif
 }

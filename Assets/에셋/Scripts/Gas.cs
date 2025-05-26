@@ -28,9 +28,13 @@ public class Gas : MonoBehaviour
             i.transform.rotation = Quaternion.Euler(Vector3.Lerp(StartAngle, EndAngle ,t/MovingTime));
         }
     }
-    public void SetLoc(float t)
+    void SetLoc(float t)
     {
         transform.position = new Vector3(transform.position.x, Mathf.Lerp(Elevator.transform.position.y - 3, Elevator.transform.position.y, t), transform.position.z);
+    }
+    public void SetTime(float NewT)
+    {
+        this.t = NewT;
     }
     public void Reset()
     {

@@ -4,7 +4,6 @@ using UnityEngine.Events;
 
 public class PoseDetector : MonoBehaviour
 {
-    public float Boost = 0.01f;
     private Tracker TrackerInstance;
     public double TrackLimit = 2.0f;
     private bool bIsDetecting = false;
@@ -16,23 +15,12 @@ public class PoseDetector : MonoBehaviour
     private UnityEngine.XR.InputDevice device;
     private MeshRenderer Renderer;
     public GameObject textObject;
+    private Vector3 objLoc;
     void Start()
     {
         Renderer = textObject.GetComponent<MeshRenderer>();
         TrackerInstance = Object.FindFirstObjectByType<Tracker>();
         LoadPrefabs();
-        var leftHandDevices = new List<UnityEngine.XR.InputDevice>();
-        UnityEngine.XR.InputDevices.GetDevicesAtXRNode(UnityEngine.XR.XRNode.LeftHand, leftHandDevices);
-
-        if (leftHandDevices.Count == 1)
-        {
-            device = leftHandDevices[0];
-            Debug.Log(string.Format("Device name '{0}' with role '{1}'", device.name, device.characteristics.ToString()));
-        }
-        else if (leftHandDevices.Count > 1)
-        {
-            Debug.Log("Found more than one left hand!");
-        }
     }
     void LoadPrefabs()
     {
@@ -50,17 +38,21 @@ public class PoseDetector : MonoBehaviour
     {
         textObject.SetActive(true);
         bIsDetecting = true;
+        objLoc = textObject.transform.position;
     }
     public void StopTrack()
     {
         textObject.SetActive(false);
         bIsDetecting = false;
+        idkL = 0;
+        idkR = 0;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (bIsDetecting)
-        {                
+        {
+            textObject.transform.position = objLoc;
             int framesL = 0;
             int framesR = 0;
             double LowestAverageL = TrackLimit;
@@ -68,65 +60,55 @@ public class PoseDetector : MonoBehaviour
             for (int i = 0; i < prefabs.Count; i++)
             {
                 
-
-
-                for (int j = 0; j < 3; j++)
+                for (int j = 0; j < 300; j++)
                 {
                     if (j + idkL >= prefabs[i].LTracker.Count)
                     {
                         break;
                     }
-                    double AverageL = 0;
-                    AverageL += Vector3.Distance(TrackerInstance.LTracker, prefabs[i].LTracker[idkL + j]);
-                    AverageL /= 1;
-                    if (LowestAverageL > (AverageL - j * Boost))
+                    double AverageL = Vector3.Distance(TrackerInstance.LTracker - objLoc, prefabs[i].LTracker[idkL + j] - objLoc);
+                    if (LowestAverageL > AverageL)
                     {
+                        print(prefabs[i].LTracker[idkL + j]);
                         LowestAverageL = AverageL;
                         framesL = j;
-                        Renderer.material.SetFloat("_ProgressL", (float)(idkL + framesL) / prefabs[i].LTracker.Count);
+                        Renderer.material.SetFloat("_ProgressR", (float)(idkL + framesL) / prefabs[i].LTracker.Count); //????????????????????????????????????????????????????
                     }
                 }
-
-                for (int j = 0; j < 3; j++)
+                
+                for (int K = 0; K < 300; K++)
                 {
-                    if (j + idkR >= prefabs[i].RTracker.Count)
+                    if (K + idkR >= prefabs[i].RTracker.Count)
                     {
                         break;
                     }
-                    double AverageR = 0;
-                    AverageR += Vector3.Distance(TrackerInstance.RTracker, prefabs[i].RTracker[idkR + j]);
-                    AverageR /= 1;
-                    if (LowestAverageR > (AverageR - j * Boost))
+                    double AverageR = Vector3.Distance(TrackerInstance.RTracker - objLoc, prefabs[i].RTracker[idkR + K] - objLoc);
+                    if (LowestAverageR > AverageR)
                     {
-                        print(j);
                         LowestAverageR = AverageR;
-                        framesR = j;
-                        Renderer.material.SetFloat("_ProgressR", (float)(idkR + framesR) / prefabs[i].RTracker.Count);
+                        framesR = K;
+                        Renderer.material.SetFloat("_ProgressL", (float)(idkR + framesR) / prefabs[i].RTracker.Count);
                     }
                 }
+                
             }
             idkL += framesL;
             idkR += framesR;
 
-
             if (LowestAverageL >= TrackLimit)
             {
                 idkL = 0;
-                Debug.LogError("Pose not detected");
-                Renderer.material.SetFloat("_ProgressL", 0);
+                Renderer.material.SetFloat("_ProgressR", 0);
             }
             if (LowestAverageR >= TrackLimit)
             {
                 idkR = 0;
-                Debug.LogError("Pose not detected");
-                Renderer.material.SetFloat("_ProgressR", 0);
+                Renderer.material.SetFloat("_ProgressL", 0);
             }
             else if (idkR >= prefabs[0].RTracker.Count - 60 && idkL >= prefabs[0].LTracker.Count - 60)
             {
                 OnPoseDetected.Invoke();
                 Debug.Log("Pose detected");
-                idkL = 0;
-                idkR = 0;
                 StopTrack();
             }
         }

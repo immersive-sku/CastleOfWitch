@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine.UI;
 
 namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
@@ -10,28 +12,11 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
     {
         [SerializeField]
         [Tooltip("The Text component this behavior uses to display the incremented value.")]
-        Text m_Text;
+        Image m_Image;
+        public List<Sprite> SpriteList;
         public AAA aaa;
 
-        /// <summary>
-        /// The Text component this behavior uses to display the incremented value.
-        /// </summary>
-        public Text text
-        {
-            get => m_Text;
-            set => m_Text = value;
-        }
-
         int m_Count;
-
-        /// <summary>
-        /// See <see cref="MonoBehaviour"/>.
-        /// </summary>
-        protected void Awake()
-        {
-            if (m_Text == null)
-                Debug.LogWarning("Missing required Text component reference. Use the Inspector window to assign which Text component to increment.", this);
-        }
 
         /// <summary>
         /// Increment the string message of the Text component.
@@ -40,8 +25,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         {
             m_Count += 1;
             if (m_Count > aaa.Max) m_Count = 0;
-            if (m_Text != null)
-                m_Text.text = m_Count.ToString();
+            if (m_Image != null)
+                m_Image.sprite = SpriteList[m_Count];
             print(m_Count);
         }
     }

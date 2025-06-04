@@ -98,9 +98,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9102345268720885760, guid: 9fa0262b5928438439402fc6a263bfb1, type: 3}
       propertyPath: m_Name
-      value: Gas
+      value: Gas 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -7225183027445606096, guid: 9fa0262b5928438439402fc6a263bfb1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

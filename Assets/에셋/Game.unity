@@ -55628,6 +55628,10 @@ PrefabInstance:
       propertyPath: EventList.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1267344474139285404, guid: 344ab488ce19c9746ba5c7e817496d9e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0266
+      objectReference: {fileID: 0}
     - target: {fileID: 1392625332688769454, guid: 344ab488ce19c9746ba5c7e817496d9e, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.05
@@ -55643,6 +55647,10 @@ PrefabInstance:
     - target: {fileID: 1392625332688769454, guid: 344ab488ce19c9746ba5c7e817496d9e, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1528950027862873307, guid: 344ab488ce19c9746ba5c7e817496d9e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0266
       objectReference: {fileID: 0}
     - target: {fileID: 1628940529403110217, guid: 344ab488ce19c9746ba5c7e817496d9e, type: 3}
       propertyPath: m_AnchorMax.y
@@ -55780,6 +55788,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3771550264639564630, guid: 344ab488ce19c9746ba5c7e817496d9e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0435
+      objectReference: {fileID: 0}
     - target: {fileID: 3970569196826728477, guid: 344ab488ce19c9746ba5c7e817496d9e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -55787,6 +55799,10 @@ PrefabInstance:
     - target: {fileID: 3970569196826728477, guid: 344ab488ce19c9746ba5c7e817496d9e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4046338189595396974, guid: 344ab488ce19c9746ba5c7e817496d9e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0435
       objectReference: {fileID: 0}
     - target: {fileID: 4110016542792869351, guid: 344ab488ce19c9746ba5c7e817496d9e, type: 3}
       propertyPath: m_AnchorMax.y
@@ -55896,6 +55912,30 @@ PrefabInstance:
       propertyPath: m_CameraYOffset
       value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 6232840915787111706, guid: 344ab488ce19c9746ba5c7e817496d9e, type: 3}
+      propertyPath: m_FarAttachMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232840915787111706, guid: 344ab488ce19c9746ba5c7e817496d9e, type: 3}
+      propertyPath: m_EnableFarCasting
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232840915787111706, guid: 344ab488ce19c9746ba5c7e817496d9e, type: 3}
+      propertyPath: m_AllowHoveredActivate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232840915787111706, guid: 344ab488ce19c9746ba5c7e817496d9e, type: 3}
+      propertyPath: m_NearCasterSortingStrategy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489467249176591650, guid: 344ab488ce19c9746ba5c7e817496d9e, type: 3}
+      propertyPath: m_FarAttachMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489467249176591650, guid: 344ab488ce19c9746ba5c7e817496d9e, type: 3}
+      propertyPath: m_EnableFarCasting
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7242824022489839048, guid: 344ab488ce19c9746ba5c7e817496d9e, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -55932,6 +55972,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7419499571294536488, guid: 344ab488ce19c9746ba5c7e817496d9e, type: 3}
+      propertyPath: m_CastDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419499571294536488, guid: 344ab488ce19c9746ba5c7e817496d9e, type: 3}
+      propertyPath: m_HitDetectionType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419499571294536488, guid: 344ab488ce19c9746ba5c7e817496d9e, type: 3}
+      propertyPath: m_SphereCastRadius
+      value: 0.0353
+      objectReference: {fileID: 0}
     - target: {fileID: 7513845301435772026, guid: 344ab488ce19c9746ba5c7e817496d9e, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -55959,6 +56011,18 @@ PrefabInstance:
     - target: {fileID: 7583682293562711423, guid: 344ab488ce19c9746ba5c7e817496d9e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -245
+      objectReference: {fileID: 0}
+    - target: {fileID: 7676135230161150736, guid: 344ab488ce19c9746ba5c7e817496d9e, type: 3}
+      propertyPath: m_CastDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7676135230161150736, guid: 344ab488ce19c9746ba5c7e817496d9e, type: 3}
+      propertyPath: m_HitDetectionType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7676135230161150736, guid: 344ab488ce19c9746ba5c7e817496d9e, type: 3}
+      propertyPath: m_SphereCastRadius
+      value: 0.0353
       objectReference: {fileID: 0}
     - target: {fileID: 7950354077295317600, guid: 344ab488ce19c9746ba5c7e817496d9e, type: 3}
       propertyPath: m_IsActive

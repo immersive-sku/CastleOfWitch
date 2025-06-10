@@ -66,7 +66,9 @@ public class PoseDetector : MonoBehaviour
                     {
                         break;
                     }
-                    double AverageL = Vector3.Distance(TrackerInstance.LTracker - objLoc, prefabs[i].LTracker[idkL + j] - objLoc);
+                    
+                    double AverageL =
+                        Mathf.Abs(Vector3.Distance(TrackerInstance.LTracker ,objLoc) - Vector3.Distance(prefabs[i].LTracker[idkL + j], objLoc));
                     if (LowestAverageL > AverageL)
                     {
                         print(prefabs[i].LTracker[idkL + j]);

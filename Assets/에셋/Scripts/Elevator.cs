@@ -14,6 +14,7 @@ public class Elevator : MonoBehaviour
     public List<float> DelayList;
     public List<float> DelayList2;
     public List<UnityEvent> EventList;
+    public List<UnityEvent> EventList0;
     static bool CanGoUP = false;
     static bool WillGoUP = false;
     public float UpValue = 0.01f;
@@ -39,6 +40,7 @@ public class Elevator : MonoBehaviour
         yield return new WaitForSeconds(DelayList[i]);
         EventList[i].Invoke();
         yield return new WaitForSeconds(DelayList2[i]);
+        EventList0[i].Invoke();
         Count = 0;
         CanGoUP = true;
         gameObject.GetComponent<BoxCollider>().enabled = true;

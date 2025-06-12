@@ -21,6 +21,7 @@ public class Elevator : MonoBehaviour
     MeshRenderer Renderer;
     public Material LightMat;
     public Material DarkMat;
+    public GameObject MagicObject;
 
     public void Clear()
     {
@@ -49,7 +50,7 @@ public class Elevator : MonoBehaviour
     }
     private void Start()
     {
-        Renderer = gameObject.GetComponent<MeshRenderer>();
+        Renderer = MagicObject.GetComponent<MeshRenderer>();
     }
 
     private void OnTriggerStay(Collider other)

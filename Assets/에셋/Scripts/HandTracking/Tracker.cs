@@ -1,27 +1,34 @@
 using UnityEngine;
-using System.Collections.Generic;
-using Vector3 = UnityEngine.Vector3;
-using UnityEditor;
-
 public class Tracker : MonoBehaviour
 {
-    public Vector3 LTracker;
-    private GameObject LTrackerObject;
-
-    public Vector3 RTracker;
-    private GameObject RTrackerObject;
-
-
-    private void Start()
+    float L = 0;
+    float R = 0;
+    public float Buffer = 0.2f ;
+    public void SetL(float newL)
     {
-        InvokeRepeating("UpdateLimited", 0, 0.016f);
+        if (newL > L && newL <= L + Buffer)
+        {
+            L = newL;
+        }
     }
-
-    private void UpdateLimited()
+    public void SetR(float newR)
     {
-        LTrackerObject = GameObject.Find("/XR Origin (XR Rig)/Camera Offset/Left Controller");
-        RTrackerObject = GameObject.Find("/XR Origin (XR Rig)/Camera Offset/Right Controller");
-        LTracker = LTrackerObject.transform.localPosition;
-        RTracker= RTrackerObject.transform.localPosition;
+        if (newR > R && newR <= R + Buffer)
+        {
+            R = newR;
+        }
+    }
+    public void ResetTracker()
+    {
+        R = 0;
+        L = 0;
+    }
+    public float GetL()
+    {
+        return L;
+    }
+    public float GetR()
+    {
+        return R;
     }
 }

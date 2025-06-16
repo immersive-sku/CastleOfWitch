@@ -14,9 +14,11 @@ public class Gas : MonoBehaviour
     public float GasDamagePerTick;
     public Vector3 StartAngle;
     public Vector3 EndAngle;
+    public float LastElevatorY;
     private void Start()
     {
         Elevator = GameObject.Find("Elevator");
+        LastElevatorY = Elevator.transform.position.y;
     }
     void Update()
     {
@@ -30,7 +32,7 @@ public class Gas : MonoBehaviour
     }
     void SetLoc(float t)
     {
-        transform.position = new Vector3(transform.position.x, Mathf.Lerp(Elevator.transform.position.y - 3, Elevator.transform.position.y, t), transform.position.z);
+        transform.position = new Vector3(transform.position.x, Mathf.Lerp(LastElevatorY - 3, LastElevatorY, t), transform.position.z);
     }
     public void SetTime(float NewT)
     {
@@ -39,6 +41,7 @@ public class Gas : MonoBehaviour
     public void Reset()
     {
         t = 0;
+        LastElevatorY = Elevator.transform.position.y;
     }
     private void OnTriggerStay(Collider other)
     {

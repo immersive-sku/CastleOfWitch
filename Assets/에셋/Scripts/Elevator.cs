@@ -15,13 +15,18 @@ public class Elevator : MonoBehaviour
     public List<float> DelayList2;
     public List<UnityEvent> EventList;
     public List<UnityEvent> EventList0;
-    static bool CanGoUP = false;
-    static bool WillGoUP = false;
+    bool CanGoUP = false;
+    bool WillGoUP = false;
     public float UpValue = 0.01f;
     MeshRenderer Renderer;
     public Material LightMat;
     public Material DarkMat;
     public GameObject MagicObject;
+    GameObject XrRig;
+    public GameObject Gas;
+    bool Teleport = false;
+
+    public List<GameObject> FloorObjectList;
 
     public void Clear()
     {
@@ -42,15 +47,41 @@ public class Elevator : MonoBehaviour
         EventList[i].Invoke();
         yield return new WaitForSeconds(DelayList2[i]);
         EventList0[i].Invoke();
-        Count = 0;
         CanGoUP = true;
         gameObject.GetComponent<BoxCollider>().enabled = true;
-        i++;
+        LoadFloor(i + 1);
+        Count = 0;
+
         print("clear!");
+    }
+    public void SetFloor(int Floor)
+    {
+        Teleport = true;
+        LoadFloor(Floor);
+        Count = 0;
+        CanGoUP = false;
+    }
+    void LoadFloor(int Floor)
+    {
+        if(Floor >= 1 && i == 0)
+        {
+            Gas.SetActive(true);
+        }
+        if (i != Floor && i - Floor != -1)
+        {
+            FloorObjectList[i].SetActive(false);
+        }
+        i = Floor;
+        if (i >= 2)
+        {
+            FloorObjectList[i - 2].SetActive(false);
+        }
+        FloorObjectList[i].SetActive(true);
     }
     private void Start()
     {
         Renderer = MagicObject.GetComponent<MeshRenderer>();
+        XrRig = GameObject.Find("XR Origin (XR Rig)");
     }
 
     private void OnTriggerStay(Collider other)
@@ -60,7 +91,13 @@ public class Elevator : MonoBehaviour
 
     void Update()
     {
-        if(CanGoUP)
+        if (Teleport)
+        {
+            Finish();
+            Teleport = false;
+            return;
+        }
+        if (CanGoUP)
         {
             Renderer.material = LightMat;
         }
@@ -72,15 +109,7 @@ public class Elevator : MonoBehaviour
         {
             if (gameObject.transform.position.y >= FloorList[i - 1])
             {
-                foreach (var item in ElevatorWalls)
-                {
-                    item.SetActive(false);
-                }
-                transform.SetPositionAndRotation(new Vector3(transform.position.x, FloorList[i - 1], transform.position.z), transform.rotation);
-                CanGoUP = false;
-                WillGoUP = false;
-                FindAnyObjectByType<Gas>().Reset();
-                gameObject.GetComponent<BoxCollider>().enabled = false;
+                Finish();
             }
             else
             {
@@ -88,12 +117,24 @@ public class Elevator : MonoBehaviour
                 {
                     item.SetActive(true);
                 }
-                FindAnyObjectByType<Character>().LastFloor = gameObject.transform.position + new Vector3(0, 0.1f, 0);
-                GameObject.Find("XR Origin (XR Rig)").transform.Translate(0, UpValue * Time.deltaTime, 0);
+                XrRig.transform.Translate(0, UpValue * Time.deltaTime, 0);
                 transform.Translate(0, UpValue * Time.deltaTime, 0);
-                print("going up");
             }
         }
 
+        void Finish()
+        {
+            foreach (var item in ElevatorWalls)
+            {
+                item.SetActive(false);
+            }
+            XrRig.GetComponent<Character>().LastFloor = transform.position;
+            XrRig.transform.SetPositionAndRotation(new Vector3(XrRig.transform.position.x, FloorList[i - 1] + 0.1f, XrRig.transform.position.z), XrRig.transform.rotation);
+            transform.SetPositionAndRotation(new Vector3(transform.position.x, FloorList[i - 1], transform.position.z), transform.rotation);
+            CanGoUP = false;
+            WillGoUP = false;
+            FindAnyObjectByType<Gas>().Reset();
+            gameObject.GetComponent<BoxCollider>().enabled = false;
+        }
     }
 }

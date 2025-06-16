@@ -74,7 +74,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Noise:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: eb5538f952f018c4aa350c55824d21b2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseAo:
+        m_Texture: {fileID: 2800000, guid: 5dd45a5a205287642be983da8029f18f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseNormal:
+        m_Texture: {fileID: 2800000, guid: cfdaa8a1d46718747aa5e901b54934f0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseRough:
+        m_Texture: {fileID: 2800000, guid: a57b1d087dd6cc640922a74b1894f1d2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -122,18 +134,21 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
+    - _NoiseMax: 0.1
+    - _NoiseTile: 50
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _Size: 10
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _UseNoise: 0
+    - _UseNoise: 1
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:

@@ -21,7 +21,6 @@ public class Pot : MonoBehaviour
         } else
         {
             t = 0;
-            EffectObject.SetActive(false);
             this.enabled = false;
         }
     }

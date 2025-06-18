@@ -11,7 +11,6 @@ public class Attack : MonoBehaviour
         OriginalPosition = transform.position;
         OriginalScale = transform.localScale;
         StartCoroutine(nameof(AttacCorutine));
-        print("wtf");
     }
     IEnumerator AttacCorutine()
     {

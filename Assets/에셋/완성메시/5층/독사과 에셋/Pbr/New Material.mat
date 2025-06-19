@@ -45,7 +45,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Diffuse:
-        m_Texture: {fileID: 2800000, guid: 9a049ed1206a4bf4fbe4098b52c3b99b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 35db53a2167d6fe4bbd0abf79765c33e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -57,7 +57,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Metalic:
-        m_Texture: {fileID: 2800000, guid: 390de730df55b574aaed096f0f19add5, type: 3}
+        m_Texture: {fileID: 2800000, guid: eec13edb6bb496341b33c40b30513ad0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -65,7 +65,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: 5de149e37d7f568439bd28aae0d57f8c, type: 3}
+        m_Texture: {fileID: 2800000, guid: d20e90e10e0ce4f4c9b763d93b33d1ea, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -77,7 +77,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Roughness:
-        m_Texture: {fileID: 2800000, guid: 7a894668f5b3e97419b6273459736d5f, type: 3}
+        m_Texture: {fileID: 2800000, guid: b3c539ed9f8e2ea49b5207de1c0301b0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -135,11 +135,11 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _diffuse_add: {r: 0, g: 0, b: 0, a: 0}
-    - _emission: {r: 10, g: 10, b: 10, a: 0}
+    - _diffuse_add: {r: -1, g: 0, b: -1, a: 0}
+    - _emission: {r: 0, g: 5, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &8105669877003775119
+--- !u!114 &7020937985236914349
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

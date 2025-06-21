@@ -8,9 +8,11 @@ public class MenuController : MonoBehaviour
     public Slider HeightSlider;
     public GameObject CameraOffset;
     public TMPro.TMP_Text UITextMeshPro;
+    public Transform T;
     public void ToggleMenu()
     {
         MenuCanvas.enabled = !MenuCanvas.enabled;
+        transform.SetPositionAndRotation(T.position, T.rotation);
         print(MenuCanvas.enabled);
     }
     public void HeightValueChanged()

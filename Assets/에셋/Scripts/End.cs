@@ -13,7 +13,7 @@ public class End : MonoBehaviour
         vp.loopPointReached += OpenNextScene;
     }
 
-    void OpenNextScene(UnityEngine.Video.VideoPlayer vp)
+    public void OpenNextScene(UnityEngine.Video.VideoPlayer vp)
     {
         SceneManager.LoadScene(NextScene);
     }

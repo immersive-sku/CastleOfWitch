@@ -28,6 +28,11 @@ public class Elevator : MonoBehaviour
 
     public List<GameObject> FloorObjectList;
 
+    public void Save()
+    {
+        PlayerPrefs.SetInt("Floor", i);
+    }
+
     public void Clear()
     {
         Count++;
@@ -56,6 +61,10 @@ public class Elevator : MonoBehaviour
     }
     public void SetFloor(int Floor)
     {
+        if (Floor == 2)
+        {
+            FloorObjectList[1].SetActive(false);
+        }
         Teleport = true;
         LoadFloor(Floor);
         Count = 0;
@@ -67,6 +76,7 @@ public class Elevator : MonoBehaviour
         {
             Gas.SetActive(true);
         }
+
         if (i != Floor && i - Floor != -1)
         {
             FloorObjectList[i].SetActive(false);
@@ -82,6 +92,15 @@ public class Elevator : MonoBehaviour
     {
         Renderer = MagicObject.GetComponent<MeshRenderer>();
         XrRig = GameObject.Find("XR Origin (XR Rig)");
+        if(!PlayerPrefs.HasKey("Floor"))
+        {
+            PlayerPrefs.SetInt("Floor", 0);
+        }
+        if (PlayerPrefs.GetInt("Floor") != 0)
+        {
+            SetFloor(PlayerPrefs.GetInt("Floor"));
+        }
+        PlayerPrefs.SetInt("Floor", 0);
     }
 
     private void OnTriggerStay(Collider other)
@@ -117,7 +136,7 @@ public class Elevator : MonoBehaviour
                 {
                     item.SetActive(true);
                 }
-                XrRig.transform.Translate(0, UpValue * Time.deltaTime, 0);
+                XrRig.transform.position = transform.position + new Vector3(XrRig.transform.position.x, 0.6f, XrRig.transform.position.z);
                 transform.Translate(0, UpValue * Time.deltaTime, 0);
             }
         }
@@ -129,7 +148,7 @@ public class Elevator : MonoBehaviour
                 item.SetActive(false);
             }
             XrRig.GetComponent<Character>().LastFloor = transform.position;
-            XrRig.transform.SetPositionAndRotation(new Vector3(XrRig.transform.position.x, FloorList[i - 1] + 0.1f, XrRig.transform.position.z), XrRig.transform.rotation);
+            XrRig.transform.SetPositionAndRotation(new Vector3(0, FloorList[i - 1], 0), XrRig.transform.rotation);
             transform.SetPositionAndRotation(new Vector3(transform.position.x, FloorList[i - 1], transform.position.z), transform.rotation);
             CanGoUP = false;
             WillGoUP = false;

@@ -24,8 +24,9 @@ MonoBehaviour:
     probeSamplingDebugMesh: {fileID: 0}
     probeSamplingDebugTexture: {fileID: 0}
     probeVolumeBlendStatesCS: {fileID: 0}
-  m_RendererFeatures: []
-  m_RendererFeatureMap: 
+  m_RendererFeatures:
+  - {fileID: 4286462958753701705}
+  m_RendererFeatureMap: 495f62af59937c3b
   m_UseNativeRenderPass: 1
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
@@ -37,7 +38,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_DefaultStencilState:
-    overrideStencilState: 0
+    overrideStencilState: 1
     stencilReference: 0
     stencilCompareFunction: 8
     passOperation: 2
@@ -50,4 +51,36 @@ MonoBehaviour:
   m_DepthAttachmentFormat: 0
   m_DepthTextureFormat: 0
   m_AccurateGbufferNormals: 0
-  m_IntermediateTextureMode: 0
+  m_IntermediateTextureMode: 1
+--- !u!114 &4286462958753701705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fe0a12f2c9a19d4995f9666e90b2e6e, type: 3}
+  m_Name: ScreenSpaceOutlines
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  renderPassEvent: 200
+  outlinesLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  outlineSettings:
+    outlineColor: {r: 1, g: 0.5153113, b: 0, a: 1}
+    outlineScale: 6.5
+    depthThreshold: 11
+    robertsCrossMultiplier: 87
+    normalThreshold: 0.4
+    steepAngleThreshold: 0.2
+    steepAngleMultiplier: 25
+    colorFormat: 0
+    depthBufferBits: 0
+    filterMode: 0
+    backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+    perObjectData: -1
+    enableDynamicBatching: 0
+    enableInstancing: 0

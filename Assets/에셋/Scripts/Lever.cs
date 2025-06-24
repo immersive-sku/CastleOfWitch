@@ -24,7 +24,6 @@ public class Lever : MonoBehaviour
         {
             if (!item) return;
         }
-        gameObject.transform.SetPositionAndRotation(transform.position + new Vector3(0, 0.3f, 0), transform.rotation);
         Event.Invoke();
     }
     public void Sub(int i)

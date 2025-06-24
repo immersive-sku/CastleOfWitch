@@ -31,4 +31,9 @@ public class Tracker : MonoBehaviour
     {
         return R;
     }
+    public void Update()
+    {
+        L += Time.deltaTime /10;
+        R += Time.deltaTime /10;
+    }
 }

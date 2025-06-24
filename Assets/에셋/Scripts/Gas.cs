@@ -12,8 +12,8 @@ public class Gas : MonoBehaviour
     public float PlayerDamageTickInSeconds = 0;
     public float MovingTime;
     public float GasDamagePerTick;
-    public Vector3 StartAngle;
-    public Vector3 EndAngle;
+    public List<Vector3> StartAngle;
+    public List<Vector3> EndAngle;
     public float LastElevatorY;
     private void Start()
     {
@@ -23,11 +23,11 @@ public class Gas : MonoBehaviour
     void Update()
     {
         t += Time.deltaTime;
-
+        int Level = GameObject.Find("Elevator").GetComponent<Elevator>().i;
         SetLoc(t / MovingTime);
         foreach (var i in Gauge)
         {
-            i.transform.rotation = Quaternion.Euler(Vector3.Lerp(StartAngle, EndAngle ,t/MovingTime));
+            i.transform.rotation = Quaternion.Euler(Vector3.Lerp(StartAngle[Level], EndAngle[Level] ,t/MovingTime));
         }
     }
     void SetLoc(float t)
